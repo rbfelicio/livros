@@ -1,14 +1,13 @@
 package br.biblioteca.livros.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "LIVRO")
-public class LivroEntity {
+public class Livro {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name = "NOME", nullable = false)
@@ -17,9 +16,9 @@ public class LivroEntity {
 	@Column(name = "QUANTIDADE_PAGINAS", nullable = false)
 	private Integer quantidadePaginas;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "AUTOR_ID")
-	private AutorEntity autor;
+	private Autor autor;
 
 	public Long getId() {
 		return id;
@@ -45,11 +44,11 @@ public class LivroEntity {
 		this.quantidadePaginas = quantidadePaginas;
 	}
 
-	public AutorEntity getAutor() {
+	public Autor getAutor() {
 		return autor;
 	}
 
-	public void setAutor(AutorEntity autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 }

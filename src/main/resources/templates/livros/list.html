@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layout">
 <head>
-<meta charset="UTF-8" />
-<title>Livros</title>
+	<meta charset="UTF-8" />
+	<!-- Bootstrap CSS -->
+	<title>Livros</title>
 </head>
 <body>
-	<h1>LISTA DE  LIVRO</h1>
+<a href="#">Novo</a>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NOME</th>
+			<th>PÁGINAS</th>
+			<th>AUTOR</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr th:each="livro : ${livros}">
+			<td th:text="${livro?.id}"></td>
+			<td th:text="${livro?.nome}"></td>
+			<td th:text="${livro.quantidadePaginas}"></td>
+			<td th:text="${livro?.autor?.nome}"></td>
+			<td><a href="#"> Alterar</a></td>
+			<td><a href="#"> Excluir</a></td>
+		</tr>
+	</table>
 </body>
 </html>

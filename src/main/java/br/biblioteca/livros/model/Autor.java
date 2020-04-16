@@ -1,30 +1,23 @@
 package br.biblioteca.livros.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "AUTOR")
-public class AutorEntity {
+public class Autor {
 
 	@Id
-	@GeneratedValue
-	@Column(name = "AUTOR_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name = "NOME")
 	private String nome;
 	
 	@OneToMany(mappedBy = "autor")
-	private List<LivroEntity> livros = new ArrayList<>();
+	private List<Livro> livros = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -42,11 +35,11 @@ public class AutorEntity {
 		this.nome = nome;
 	}
 
-	public List<LivroEntity> getLivros() {
+	public List<Livro> getLivros() {
 		return livros;
 	}
 
-	public void setLivros(List<LivroEntity> livros) {
+	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
 

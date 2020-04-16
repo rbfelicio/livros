@@ -1,4 +1,4 @@
-package br.biblioteca.livros.controladores;
+package br.biblioteca.livros.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
