@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LivrosService {
@@ -15,5 +16,17 @@ public class LivrosService {
 
     public List<Livro> listaTodosLivros() {
         return livroRepository.findAll();
+    }
+
+    public void salvarLivro(Livro livro){
+        livroRepository.save(livro);
+    }
+
+    public Livro buscaLivro(Long id){
+        return livroRepository.findById(id).orElseThrow(() -> new RuntimeException());
+    }
+
+    public void excluirLivro(Long id){
+         livroRepository.deleteById(id);
     }
 }

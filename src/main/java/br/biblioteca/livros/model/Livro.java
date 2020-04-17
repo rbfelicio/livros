@@ -1,6 +1,10 @@
 package br.biblioteca.livros.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "LIVRO")
@@ -9,10 +13,12 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotEmpty
 	@Column(name = "NOME", nullable = false)
 	private String nome;
-	
+
+	@Min(10)
 	@Column(name = "QUANTIDADE_PAGINAS", nullable = false)
 	private Integer quantidadePaginas;
 	
