@@ -1,10 +1,10 @@
 package br.biblioteca.livros.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "LIVRO")
@@ -25,6 +25,9 @@ public class Livro {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "AUTOR_ID")
 	private Autor autor;
+
+	@OneToMany(mappedBy = "livro")
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -56,5 +59,13 @@ public class Livro {
 
 	public void setAutor(Autor autor) {
 		this.autor = autor;
+	}
+
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 }
