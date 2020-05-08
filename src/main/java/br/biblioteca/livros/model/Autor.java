@@ -16,7 +16,7 @@ public class Autor {
 	@Column(name = "NOME")
 	private String nome;
 	
-	@OneToMany(mappedBy = "autor")
+	@OneToMany(mappedBy = "autor", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Livro> livros = new ArrayList<>();
 
 	public Long getId() {

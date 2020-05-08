@@ -13,23 +13,47 @@
 </head>
 <body>
 <div class="container" style="margin:10px">
-    <a href="#" th:href="@{/livros/novo}">Novo</a>
+    <!--    navbar-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" th:href="@{'/livros/list'}">Livros</a></li>
+                    <li><a href="#" th:href="@{'/autor/list'}">Autores</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--    navbar-->
+    <a class="btn btn-primary" style="margin-bottom: 10px" href="#" th:href="@{/livros/novo}">Novo</a>
     <table class="table">
         <tr class="">
             <th>ID</th>
             <th>NOME</th>
             <th>PÁGINAS</th>
             <th>AUTOR</th>
-            <th></th>
-            <th></th>
+            <th>AÇÕES</th>
         </tr>
         <tr th:each="livro : ${livros}">
             <td th:text="${livro?.id}"></td>
             <td th:text="${livro?.nome}"></td>
             <td th:text="${livro.quantidadePaginas}"></td>
             <td th:text="${livro?.autor?.nome}"></td>
-            <td><a href="#" th:href="@{'/livros/alterar/'+${livro.id}}"> Alterar</a></td>
-            <td><a href="#" th:href="@{'/livros/excluir/'+${livro.id}}"> Excluir</a></td>
+            <td><a class="btn btn-primary" href="#" th:href="@{'/livros/alterar/'+${livro.id}}"> Alterar</a>
+                <a class="btn btn-danger" href="#" th:href="@{'/livros/excluir/'+${livro.id}}"> Excluir</a>
+            </td>
         </tr>
     </table>
     <!--  JQuery -->

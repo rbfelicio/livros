@@ -23,6 +23,11 @@ public class LivroController {
     @Autowired
     AutorService autorService;
 
+    /**
+     * Lista todos os livros
+     *
+     * @return
+     */
     @GetMapping("/list")
     public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("livros/list");
@@ -31,6 +36,12 @@ public class LivroController {
         return modelAndView;
     }
 
+    /**
+     * Cria um novo registro de livro de acordo com as informacoes recebidas via formulario
+     *
+     * @param livro
+     * @return
+     */
     @GetMapping("/novo")
     public ModelAndView createForm(@ModelAttribute Livro livro) {
         ModelAndView modelAndView = new ModelAndView("livros/form");
@@ -39,6 +50,12 @@ public class LivroController {
         return modelAndView;
     }
 
+    /**
+     * Altera os dados do livro de acordo com as alteracoes realizadas no formulario
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/alterar/{id}")
     public ModelAndView alterar(@PathVariable("id") Long id) {
 
@@ -52,12 +69,25 @@ public class LivroController {
         return modelAndView;
     }
 
+    /**
+     * Exclui um registro de livro
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/excluir/{id}")
     public ModelAndView excluir(@PathVariable("id") Long id) {
         livroService.excluirLivro(id);
         return new ModelAndView("redirect:/livros/list");
     }
 
+    /**
+     * Grava os informacoes recebidas de uma alteracao
+     *
+     * @param livro
+     * @param bindingResult
+     * @return
+     */
     @PostMapping(value = "/gravar")
     public ModelAndView create(@Valid Livro livro, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
