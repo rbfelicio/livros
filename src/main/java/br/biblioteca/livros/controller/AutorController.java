@@ -25,7 +25,7 @@ public class AutorController {
      */
     @GetMapping("/list")
     public ModelAndView listar() {
-        ModelAndView modelAndView = new ModelAndView("/autor/list");
+        ModelAndView modelAndView = new ModelAndView("autor/list");
         List<Autor> listaAutores = autorService.listaAutores();
         modelAndView.addObject("autores", listaAutores);
         return modelAndView;
@@ -67,7 +67,7 @@ public class AutorController {
     @GetMapping("/excluir/{id}")
     public ModelAndView excluir(@PathVariable("id") Long id) {
         autorService.excluirAutor(id);
-        return new ModelAndView("redirect:/autor/list");
+        return new ModelAndView("redirect:autor/list");
 
     }
 

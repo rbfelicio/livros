@@ -78,7 +78,7 @@ public class LivroController {
     @GetMapping("/excluir/{id}")
     public ModelAndView excluir(@PathVariable("id") Long id) {
         livroService.excluirLivro(id);
-        return new ModelAndView("redirect:/livros/list");
+        return new ModelAndView("redirect:livros/list");
     }
 
     /**
@@ -95,7 +95,7 @@ public class LivroController {
             return new ModelAndView("livros/form", "listaAutores", listaAutores);
         }
         livroService.salvarLivro(livro);
-        return new ModelAndView("redirect:/livros/list");
+        return new ModelAndView("redirect:livros/list");
 
     }
 
