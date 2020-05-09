@@ -53,7 +53,7 @@ public class AutorController {
     public ModelAndView alterar(@PathVariable("id") Long id) {
 
         Autor autor = autorService.buscaAutor(id);
-        ModelAndView modelAndView = new ModelAndView("autor/form");
+        ModelAndView modelAndView = new ModelAndView("/autor/form");
         modelAndView.addObject("autor", autor);
         return modelAndView;
 
@@ -67,7 +67,7 @@ public class AutorController {
     @GetMapping("/excluir/{id}")
     public ModelAndView excluir(@PathVariable("id") Long id) {
         autorService.excluirAutor(id);
-        return new ModelAndView("redirect:autor/list");
+        return new ModelAndView("redirect:/autor/list");
 
     }
 
